@@ -9,7 +9,17 @@ html(lang="en")
     title Portfolio | main page
   body
     .wrapper
-      .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+      .welcome-section
+        include components/hero 
+
+        include components/about
+        
+      include components/rectangle
+      include components/useful
+      include components/works
+
+      .section-feedsandform
+        include components/feeds          
+        include components/forms   
+               
+      include components/footer          

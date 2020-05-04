@@ -1,0 +1,36 @@
+section.feeds
+  .container.container-feeds
+    
+    .feeds__tilte
+      h2.feeds__tilte--text Что обо мне говорят
+      .feeds__button 
+        button.feeds__button-left <
+        button.feeds__button-right >
+    ul.feeds__list
+      li.feeds__item
+        +icon('quote', "feeds__icon") 
+        .feeds__block
+          .feeds__text
+            p Этот парень проходил обучение ни где то, а в Loftschool! 4.5 месяца только самых тяжелых испытаний и бессонных ночей!
+          .feed__author
+            .feed__author-avatar
+              .avatar         
+                +image("content/mentor.png", "avatar__img") 
+            .feed__author-desc 
+              .feed__author-name Владимир Сабанцев 
+              .feed__author-function Преподаватель
+      li.feeds__item
+        +icon('quote', "feeds__icon") 
+        .feeds__block
+          .feeds__text
+            p Этот код выдержит любые испытания. Только пожалуйста не загружайте сайт на слишком старых браузерах.
+          .feed__author
+            .feed__author-avatar
+              .avatar         
+                +image("content/mentor.png", "avatar__img") 
+            .feed__author-desc 
+              .feed__author-name Владимир Сабанцев 
+              .feed__author-function Преподаватель
+    
+       
+

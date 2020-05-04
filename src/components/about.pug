@@ -1,0 +1,32 @@
+section.about-section
+  .container
+    .about  
+      .about__user-data
+        .user-info
+          .user-info__avatar
+            .avatar
+              +image("content/user.jpg", "avatar__img")
+
+          .user-info__content
+            -
+              var userdata = [
+                ["Проживаю:", "Казань"],
+                ["Возраст:", "30 лет"],
+                ["Родился:", "10 сентября 1989"]
+              ];
+            table.user-info__data
+              tbody.user-info__data-body
+                each row in userdata
+                  tr
+                    td.user__key #{row[0]}
+                    td.user__value #{row[1]}
+
+      .about__content      
+        .about__disclamer Привет, меня зовут 
+        h2.about__title Эдуард Алпаров
+        .about__desc 
+          p Я занимаюсь разработкой современных сайтов и приложений.
+          p Мне нравиться создавать интересные и оригинальные проекты. 
+        .about__ps
+          p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все класно и красиво!
+          +icon('star', "about__icon")

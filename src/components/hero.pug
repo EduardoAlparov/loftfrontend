@@ -1,0 +1,32 @@
+section.hero
+  .container.hero__container  
+    .header
+
+      .header__logo
+        a.logo(href='#')
+          p.logo__abbr ЭА
+
+      .header__menu
+        nav.menu 
+          -var items = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+          ul.menu__list
+            each item in items
+              li.menu__item 
+                a.menu__link #{item}
+
+      .header__socials
+        - var icons = ["insta", "vk", "github"]
+        ul.socials  
+          each item, index in icons
+            li.socials__item
+              a(href="").socials__link
+                +icon(item, "socials__icon")
+
+    .hero-content
+      .content__salutation Личный сайт<br> веб-разработчика
+      .content__name Эдуард<br> Алпаров   
+
+    .hero__scroll-down              
+      a(href="#").scroll-down-btn 
+        .scroll-text Скролл
+        +icon('scroll', "scroll-svg")       

@@ -1,0 +1,39 @@
+section.footer-section
+  .container
+    .footer
+      .footer__block-left
+        .block-year
+          p  &#169 2019
+        .block-name
+          p Эдуард<br> Алпаров 
+        .block-text
+          p Личный сайт<br> веб-разработчика
+
+      .footer__block-right
+        .footer__menu
+          nav.menu 
+            -var items = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+            ul.menu__list
+              each item in items
+                li.menu__item 
+                  a.menu__link #{item}
+        .block__right
+          .block__right-one
+            .right-one-text
+              p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool.
+            .socials
+              - var icons = ["insta", "vk", "github"]
+              ul.socials  
+                each item, index in icons
+                  li.socials__item--footer
+                    a(href="").socials__link--footer
+                      +icon(item, "socials__icon-footer")  
+          .block__right-two
+            .right-two-text
+              p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живетею
+            .right-two-name Martin Golding
+              
+          
+
+        
+          
