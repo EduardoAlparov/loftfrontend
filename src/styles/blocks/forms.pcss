@@ -1,5 +1,5 @@
 .forms {
-  height: 100vh;
+  height: 104vh;
   position: relative;
   min-height: 650px;
 }
@@ -8,11 +8,11 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  position: relative;
 }
 
-.forms__blocks{
-
+.forms__blocks {
+  margin-left: 35px;
 }
 
 .forms__title {
@@ -21,13 +21,15 @@
   font-weight: bold;
   line-height: 1.333;
   text-align: left;
-
+  margin-left: 30px;
+  margin-bottom: 76px;
 }
 
 .forms__block-label {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.302);
   line-height: 1.875;
+
 }
 
 
@@ -37,7 +39,7 @@
 }
 
 .forms__block-two{
-  margin-bottom: 40px;
+  margin-bottom: 54px;
 }
 
 .forms__block-label{
@@ -63,6 +65,15 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
+   
+  
+  &:valid {
+    fill: #5500f2;
+  } 
+
+  &:invalid {
+    fill: #red;
+  }
 }
 
 .form__icon-mail {
@@ -71,6 +82,14 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
+
+  &:valid {
+    fill: #5500f2;
+  } 
+
+  &:invalid {
+    fill: #red;
+  }
 }
 
 .form__icon-text {
@@ -79,22 +98,35 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
+
+  &:valid {
+    fill: #5500f2;
+  } 
+
+  &:invalid {
+    fill: #red;
+  }
 }
 
 input {
+  outline: none;
   font-size: 18px;
   color: rgb(255, 255, 255);
   font-weight: bold;
-  padding: 12px 30px;
-  margin: 20px 0px;
   border: none;
   border-bottom: 1px solid white;
   background: transparent;
   padding: 20px 50px;
+  width: 123%;
+
+  &::valid {
+    border-bottom: 1px solid #5500f2;
+  } 
 }
 
 .forms__block-input--text{
-  width: 62%
+  padding: 43px 50px;
+  width: 70%
 }
 
 
@@ -104,7 +136,7 @@ input {
   color: rgb(255, 255, 255);
   font-weight: bold;
   text-transform: uppercase;
-  padding: 35px 120px;
+  padding: 30px 120px;
   outline: none;
   text-decoration: none;
 }

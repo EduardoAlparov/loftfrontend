@@ -1,34 +1,36 @@
 .container-useful{
   position: relative; 
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .useful {
-   background: url("~images/content/black-bckgrnd.png") no-repeat;
+  background: url("~images/content/black-bckgrnd.png") no-repeat;
   background-size: cover;
-  height: 100vh;
-   min-height: 650px;
+  height: 144vh;
+  min-height: 650px;
 }
 
 .useful__hand {
   position: absolute;
-  height: 100%;
-  left: -10%;
-  bottom: -30%;
+  height: 76%;
+  left: -9%;
+  bottom: -8%;
 }
 
 .useful__head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 50px;
+
 }
 
 .useful__title {
-  margin-bottom: 64px;
   font-size: 30px;
   color: rgb(255, 255, 255);
   font-weight: bold;
   line-height: 1.2;
+  margin-bottom: 50px;
 }
 
 
@@ -41,9 +43,7 @@
 }
 
 .user-skills {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  margin-left: 309px;
 }
 
 .skills-row__list {
@@ -64,4 +64,8 @@
   font-weight: bold;
   line-height: 1.667;
   opacity: .5;
+}
+
+.skills-row__title{
+  margin-top: -15px;
 }

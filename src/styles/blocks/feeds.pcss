@@ -1,13 +1,14 @@
 .container-feeds{
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  
+  justify-content: space-evenly;
+  position: relative;
 }
 
 .feeds{
-  position: relative;
   min-height: 650px;
+  margin-bottom: 33px;
 }
 
 .feeds-wrapper {
@@ -18,8 +19,7 @@
 .feeds__tilte {
   display: flex;
   align-items: center;
-  margin-top: 137px;
-  margin-bottom: 95px;
+  margin-left: 35px;
 }
 
 .feeds__tilte--text {
@@ -27,7 +27,7 @@
   color: rgb(255, 255, 255);
   font-weight: bold;
   line-height: 1.2;
-  margin-right: 70px;
+  margin-right: 103px;
 }
 
 .feeds__button {
@@ -41,25 +41,37 @@
   border-radius: 50%;
   border: 1px solid white;
   background-color: transparent;
-  margin-right: 20px;
+  margin-right: 30px;
   color: white; 
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    border: 1px solid #5500f2;
+    color: #5500f2;
+  }
+}
+
+.feeds__list {
+  display: flex;
+  margin-bottom: 51px;
+}
+
+.feeds__item{
+  display: flex;
+  margin-left: 35px;
+  margin-right: 18px;
 
   &:last-child {
     margin-right: 0;
   }
 }
 
-.feeds__list {
-  display: flex;
-}
-
-.feeds__item{
-  display: flex;
-}
-
 .feeds__icon{
   width: 72px;
-  height: 60px;
+  height: 66px;
   opacity: .2;
   fill: azure;
   margin-right: 20px;
@@ -67,9 +79,10 @@
 
 .feeds__text {
   width: 345px;
-  margin-bottom: 30px;
+  margin-bottom: 51px;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.502);
+  line-height: 1.8;
 }
 
 .feed__author {
@@ -91,4 +104,12 @@
 .feed__author-function {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.302);
+}
+
+.feed__leafs{
+  position: absolute;
+  top: 65%;
+  right: 8%;
+  height: 26%;
+  z-index: 10;
 }
