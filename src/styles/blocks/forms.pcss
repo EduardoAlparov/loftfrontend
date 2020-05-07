@@ -29,7 +29,6 @@
   font-size: 16px;
   color: rgba(255, 255, 255, 0.302);
   line-height: 1.875;
-
 }
 
 
@@ -49,6 +48,11 @@
 .forms__block-name{
   position: relative;
   margin-right: 90px;
+
+  &:focus{
+    
+  }
+
 }
 
 .forms__block-mail {
@@ -65,15 +69,6 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
-   
-  
-  &:valid {
-    fill: #5500f2;
-  } 
-
-  &:invalid {
-    fill: #red;
-  }
 }
 
 .form__icon-mail {
@@ -82,14 +77,6 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
-
-  &:valid {
-    fill: #5500f2;
-  } 
-
-  &:invalid {
-    fill: #red;
-  }
 }
 
 .form__icon-text {
@@ -98,14 +85,6 @@
   left: 0;
   top: 40%;
   fill: rgba(255, 255, 255, 0.302);
-
-  &:valid {
-    fill: #5500f2;
-  } 
-
-  &:invalid {
-    fill: #red;
-  }
 }
 
 input {
@@ -118,11 +97,17 @@ input {
   background: transparent;
   padding: 20px 50px;
   width: 123%;
+  
+  &:hover{
+    cursor: pointer;
+  }
 
-  &::valid {
-    border-bottom: 1px solid #5500f2;
-  } 
+  &:focus {
+    border-bottom-color: #ff9a00;
+  }
+  
 }
+
 
 .forms__block-input--text{
   padding: 43px 50px;
@@ -139,4 +124,12 @@ input {
   padding: 30px 120px;
   outline: none;
   text-decoration: none;
+
+  &:hover{
+    background-image: linear-gradient( 0deg, rgb(220,147,34) 0%, rgb(214,131,31) 48%, rgb(208,115,27) 100%);
+  }
+}
+
+input:focus+ svg{
+  fill: #ff9a00;
 }
