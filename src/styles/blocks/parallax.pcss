@@ -1,0 +1,72 @@
+.parallax{
+  height: 200vh;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+
+.parallax__layer {
+  position: absolute;
+  left: 0; 
+  width: 100%;
+  height: 100%;
+  top: 0;
+  will-change: transform;
+
+  &:nth-child(1){
+    .parallax__image{
+      top: 0%;
+      z-index: -12;
+    }
+  }  
+
+  &:nth-child(2){
+    .parallax__image{
+      top: 23%;
+      z-index: -10;
+    }
+  }  
+
+  &:nth-child(3){
+    .parallax__image{
+      top: 32%;
+      z-index: -8;
+    }
+  }  
+
+  &:nth-child(4){
+    .parallax__image{
+      top: 54%;
+      z-index: -6;
+    }
+  }  
+
+  &:nth-child(5){
+    .parallax__image{
+      top: 62%;
+      z-index: -4;
+    }
+  }  
+
+  &:nth-child(6){
+    .parallax__image{
+      top: 62%;
+      z-index: -2;
+    }
+  }  
+
+  &:nth-child(7){
+    .parallax__image{
+      top: 100%;
+      z-index: -1;
+    }
+  }  
+}  
+
+.parallax__image {
+  position: absolute;
+}
+
+ 

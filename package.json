@@ -44,18 +44,20 @@
     "vue-template-compiler": "^2.6.7",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.0"
+    "webpack-dev-server": "^3.11.0"
   },
   "browserslist": [
     "last 2 versions"
   ],
   "dependencies": {
+    "flickity": "^2.2.1",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "signale": "^1.4.0",
     "vue": "^2.6.7",
+    "vue-flickity": "^1.2.1",
     "vue-router": "^3.0.2"
   }
 }

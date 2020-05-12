@@ -1,0 +1,20 @@
+script(type="text/x-template")#feeds-list
+  flickity(ref="flickity" :options="flickityOptions").feeds__list
+    li.feeds__item(v-for="category in feeds" :key="category.id")
+      feeds-item(
+        :category="category"
+      )
+
+script(type="text/x-template")#feeds-item
+  .feeds__item
+    +icon('quote', "feeds__icon") 
+    .feeds__block
+      .feeds__text
+        p {{category.text}}
+      .feed__author
+        .feed__author-avatar
+          .avatar         
+            +image("content/mentor.png", "avatar__img") 
+        .feed__author-desc 
+          .feed__author-name {{category.authorname}}
+          .feed__author-function {{category.authorocc}}

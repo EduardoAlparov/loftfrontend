@@ -5,8 +5,16 @@
   height: 150px;
 }
 
-.header__socials{
+.header__menu {
+  @include tablets {
+    display: none;
+  }
+}
 
+.header__socials {
+  @include phones{
+    display: none;
+  }
 }
 
 .menu__link {

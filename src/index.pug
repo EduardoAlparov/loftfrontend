@@ -10,8 +10,8 @@ html(lang="en")
   body
     .wrapper
       .welcome-section
+        include components/parallax 
         include components/hero 
-
         include components/about
         
       include components/useful
@@ -21,4 +21,8 @@ html(lang="en")
         include components/feeds          
         include components/forms   
                
-      include components/footer          
+      include components/footer               
+              
+    include components/menu   
+
+    include ./templates/entry.pug

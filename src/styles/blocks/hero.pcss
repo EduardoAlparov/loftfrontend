@@ -7,9 +7,13 @@
 
 .hero__scroll-down {
   position: absolute;
-  bottom: 0;
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+
+  @include tablets {
+    display: none;
+  }
 }     
 
 .hero-content {
