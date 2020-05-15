@@ -1,24 +1,54 @@
 .footer-section {
   background: url("~images/content/rectangletwo.png") no-repeat;
   background-size: cover;
-  height: 371px
+  height: 371px;
+
+  @include tablets {
+    height: 485px;
+  }
+
+  @include phones {
+    height: 100%;
+
+  }
 }
 
 .footer {
   display: flex;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__block-left{
+  display: flex;
+  margin-top: 85px;
+  margin-left: 50px;
+  margin-right: 132px;
+
+  @include desktop {
   margin-top: 85px;
   flex: 1;
   margin-left: 30px;
+  }
+
+  @include tablets {
+    margin-left: 0;
+    margin-right: 40px;
+  }
 }
 
 .block-year{
+  margin-right: 60px; 
   font-size: 48px;
   color: rgba(255, 255, 255, 0.102);
-  line-height: 0.625;
+  line-height: 1;
+
+  @inclide desktop {
+  margin-right: unset;
   margin-bottom: 25px;
+  }
 }
 
 .block-name {
@@ -31,9 +61,14 @@
 }
 
 .block-text{
+  font-weight: 300;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.149);
   line-height: 1.875;
+
+  @include phones {
+    font-size: 14px;
+  }
 }
 
 .right-one-text {
@@ -41,6 +76,15 @@
   color: rgba(255, 255, 255, 0.302);
   line-height: 1.875;
   margin-bottom: 25px;
+  width: 75%;
+
+  @include tablets {
+    font-size: 14px;
+  }
+
+  @include phones {
+
+  }
 }
 
 .right-two-text {
@@ -49,6 +93,14 @@
   line-height: 1.875;
   margin-bottom: 20px;
   width: 482px;
+
+  @include tablets {
+    font-size: 14px;
+  }
+
+  @include phones {
+    width: auto;
+  }
 }
 
 .right-two-name {
@@ -56,24 +108,56 @@
   color: rgb(255, 255, 255);
   font-style: italic;
   line-height: 1.875;
+
+  @include tablets {
+    font-size: 14px;
+  }
 }
 
 
 .footer__block-right {
-  margin-top: 71px;
+  margin-top: 90px;
   flex: 3;
   display: flex;
   flex-direction: column;
   margin-right: 40px;
+
+  @include desktop {
+    margin-top: 71px;
+    flex: 3;
+  }
+
+  @include tablets {
+    margin-right: 0;
+
+  }
 }
 
 .footer__menu {
-  margin-bottom: 50px;
-}
+  margin-bottom: 65px;
+
+  @include desktop {
+    margin-bottom: 35px;
+  }
+  
+}  
 
 .block__right{
   display: flex;
+  margin-left: 15px;
+  
+
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
+.block__right-one {
+  @include tablets {
+    margin-bottom: 60px;
+  }
+}
 
-
+.block__right-two {
+  margin-bottom: 60px;
+}

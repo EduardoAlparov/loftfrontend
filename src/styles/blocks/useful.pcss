@@ -3,8 +3,16 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
+
+  @include desktop {
+  justify-content: space-evenly;
+  }
+
+  @include tablets{
+    justify-content: flex-start;
+  }
 }
 
 .useful {
@@ -12,17 +20,65 @@
   background-size: cover;
   height: 144vh;
   min-height: 650px;
+
+  @include tablets{
+    height: 100%;
+  }
+
+  @include phones {
+    height: 100%; 
+  }
 }
 
 .useful__hand {
   position: absolute;
-  height: 76%;
-  left: -20%;
+  left: -3%;
+  height: 54%;
+  bottom: -4%;
+
+  @include desktop{
+  height: 68%;
+  left: -20%;                   
   bottom: -8%;
+  }
+
+  @include tablets{
+    position: inherit;
+    transform: rotate(-90deg) ;
+    width: 50%;
+    left: 0;
+    margin-bottom: -12%;
+  }
+
+  @include phones {
+    position: inherit;
+    width: 75%;
+    margin-bottom: -18%;
+  }
 }
 
 .useful__head {
+  margin-bottom: 60px;
 
+  @include desktop {
+    margin-bottom: unset;
+  }
+
+  @include tablets{
+    margin-bottom: 65px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include tablets {
+    margin-top: 80px;
+  }
+
+  @include phones {
+    margin-top: 80px;
+  }
 }
 
 .useful__title {
@@ -31,31 +87,59 @@
   font-weight: bold;
   line-height: 1.2;
   margin-bottom: 50px;
+
+  @include phones {
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: left;
+  }
 }
-
-
 
 .useful__desc {
   width: 568px;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.502);
   line-height: 1.875;
+
+  @include tablets {
+    text-align: center;
+  }
+
+  @include phones{
+    font-size: 14px;
+    text-align: left;
+    width: auto;
+  }
 }
 
 .user-skills {
   margin-left: 309px;
+
+  @include tablets {
+    margin-left: 0;
+  }
+  
 }
 
 .skills-row__list {
   display: flex;
+
+  @include phones {
+    flex-wrap: wrap;
+  }
 }
 
 .skills-row__title {
+  margin-left: 25px;
   font-size: 24px;
   color: rgb(255, 255, 255);
   font-weight: bold;
   line-height: 2;
   opacity: .5;
+
+  @include tablets{
+    text-align: center;
+  }
 }
 
 .skill__title  {

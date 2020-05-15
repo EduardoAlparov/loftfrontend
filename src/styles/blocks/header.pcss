@@ -3,6 +3,16 @@
   justify-content: space-around;
   align-items: center;
   height: 150px;
+
+  @include phones{
+    height: 100px;
+  }
+}
+
+.header__logo {
+  @include tablets {
+    flex: 1;
+  }
 }
 
 .header__menu {
@@ -12,6 +22,11 @@
 }
 
 .header__socials {
+
+  @include tablets {
+    margin-right: 40px;
+  } 
+  
   @include phones{
     display: none;
   }
@@ -21,10 +36,6 @@
   font-size: 16px;
   color: rgb(255, 255, 255);
   line-height: 1.875;
-
-  &:hover {
-    
-  }
 
   &--active {
     color: #ff9a00;

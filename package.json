@@ -51,6 +51,7 @@
   ],
   "dependencies": {
     "flickity": "^2.2.1",
+    "jquery": "^3.5.1",
     "normalize.css": "^8.0.1",
     "promptly": "^3.0.3",
     "pug": "^2.0.3",

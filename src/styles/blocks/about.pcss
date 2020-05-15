@@ -5,17 +5,37 @@
 
 .about {
   display: flex;
+  justify-content: center;
+
+  @include phones{
+    flex-direction: column;
+  }
 }  
 
 .about__user-data {
-  flex: 2;
+  margin-right: 130px;
+
+  @include desktop {
+    margin-right: unset;
+    flex: 2;
+  }
+
+   @include phones{
+     margin-bottom: 50px;
+   }
 }
 
 
 .about__content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+
+  @include desktop {
+  display: flex;
+  flex-direction: column;
   flex: 3;
+  }
 }
 
 .about__disclamer {
@@ -33,7 +53,15 @@
   color: #ffffff;
   font-weight: 700;
   margin-bottom: 28px;
+
+  @include phones{
+    margin-bottom: 50px;
+    font-size: 30px;
+  }
 }
+
+
+
 
 .about__desc {
   font-size: 16px;
@@ -42,6 +70,16 @@
   font-weight: 600;
   opacity: 0.5;
   margin-bottom: 90px;
+
+  @include tablets {
+
+  }
+
+  @include phones{
+    font-size: 14px;
+    margin-bottom: 50px;
+  }
+
 }
 
 .about__ps {
@@ -53,6 +91,16 @@
   font-style: italic;
   opacity: 0.5;
   width: 532px;
+
+  @include tablets {
+    width: auto;
+  }  
+
+  
+  @include phones{
+    font-size: 14px;
+  }
+
 }
 
 .about__icon {

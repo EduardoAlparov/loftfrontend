@@ -1,9 +1,25 @@
 .welcome-section {
   position: relative;
-  height: 200vh;
+  height: 1750px;
+
+  
+  @include tablets {
+    background-image: url("~images/content/train.png");
+    background-size: cover;
+    background-position: center;
+    min-height: 200vh;
+  }  
+
+  @include phones {
+    
+  }
 }
 
 .section-feedsandform {
   background: url("~images/content/atumn.png") no-repeat;
   background-size: cover;
+  position: relative;
+
+  @include tablets {
+  }
 }

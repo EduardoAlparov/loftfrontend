@@ -4,16 +4,25 @@
 	top: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(#2f3234, .99);
+	background: white;
 	align-items: center;
 	justify-content: center;
 	z-index: 100;
   left: 120%; 
 	transition: opacity .3s;
 	z-index: 111111;
+	width: 40%;
+
+	@include tablets {
+
+	}
+
+	@include phones {
+		width: 100%;
+	}
 
 	&:active {
-		left: 0;
+		left: unset;
 		opacity: 1;
 	}
 	
@@ -21,11 +30,29 @@
 
 
 
+.nav__link {
+	text-decoration: none;
+	font-size: 24px;
+	color: rgb(65, 76, 99);
+	line-height: 2.667;
+	font-weight: 500;
+}
+
+.nav_hamburger {
+	margin-bottom: 55Px;
+}
+
+.hamburger-menu__close {
+	position: absolute;
+}
 
 .hamburger-menu__items {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	margin-left: 65px;
 }
+
 .hamburger-menu__logo {
 	position: absolute;
 	top: 10px;

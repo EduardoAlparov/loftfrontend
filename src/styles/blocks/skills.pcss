@@ -3,10 +3,20 @@
   height: 234px;
   fill: transparent;
   position: relative;
+  
+  @include tablets {
+    width: 191px;
+    height: 234px;
+  }
+  @include phones {
+    width: 136Px;
+    height: 172Px;
+  }
+  
 
   &__circle {
     &--under {
-      stroke: #2d3c4e;
+      stroke: #393939;
       stroke-width: 4px;
     }
     &--above {

@@ -2,7 +2,19 @@
   height: 100vh;
   position: relative;
   min-height: 650px;
-  margin-bottom: 753px;
+  margin-bottom: 120px;
+
+  @include desktop {
+  margin-bottom: 300px;
+  }
+
+  @include tablets {
+    margin-bottom: 370px;
+  }
+  
+  @include phones{
+    margin-bottom: 0;
+  }
 }
 
 .hero__scroll-down {
@@ -19,7 +31,15 @@
 .hero-content {
   display: flex;
   position: absolute; 
-  top: 63%;
+  top: 51%;
   left: 46%;
   transform: translate(-50%, -50%);
+
+   @include tablets{
+    left: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+
 }

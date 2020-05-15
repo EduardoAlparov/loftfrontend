@@ -19,7 +19,7 @@ new Vue ({
         prevNextButtons: false,
         pageDots: false,
         wrapAround: false,
-        groupCells: true,
+        groupCells: '80%',
         freeScroll: true,
         contain: true,
         adaptiveHeight: true

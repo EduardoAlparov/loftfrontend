@@ -4,6 +4,15 @@
   line-height: 0.833;
   text-align: left;
   font-weight: 800;
+
+  @include tablets {
+    text-align: center;
+    font-size: 62px;
+  }
+
+  @include phones {
+    font-size: 36px;
+  }
 }
 
 .content__salutation {
@@ -12,4 +21,15 @@
   color: rgba(255, 255, 255, 0.4);
   line-height: 1.667;
   text-align: right;
+
+  @include tablets {
+    font-size: 15px;
+    text-align: center;
+    margin: 0;
+  }
+
+  @include phones {
+    font-size: 14px;
+  }
 }
+
