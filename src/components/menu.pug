@@ -3,17 +3,17 @@
     nav.nav.nav_hamburger
       ul.nav__list
         li.nav__item
-          a#nav__link.nav__link(href='') Главная
+          a#nav__link.nav__link(href='#main' ) Главная
         li.nav__item
-          a#nav__link.nav__link(href='') Обо мне
+          a#nav__link.nav__link(href='#about') Обо мне
         li.nav__item
-          a#nav__link.nav__link(href='') Навыки
+          a#nav__link.nav__link(href='#useful') Навыки
         li.nav__item
-          a#nav__link.nav__link(href='') Работы
+          a#nav__link.nav__link(href='#works') Работы
         li.nav__item
-          a#nav__link.nav__link(href='') Отзывы
+          a#nav__link.nav__link(href='#feeds') Отзывы
         li.nav__item
-          a#nav__link.nav__link(href='') Связаться
+          a#nav__link.nav__link(href='#forms') Связаться
 
     .socials-menu
       - var icons = ["insta", "vk", "github"]
@@ -22,5 +22,5 @@
             li.socials__item
               a(href="").socials__link
                 +icon(item, "socials__icon--menu")      
-    a(href="").hamburger-menu__close
+    button.hamburger-menu__close
       +icon('Cross', "close-icon")

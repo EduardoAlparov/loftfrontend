@@ -8,11 +8,19 @@ section.hero
 
       .header__menu
         nav.menu 
-          -var items = ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+          -
+            var items = [
+              ["Главная", "main"],
+              ["Обо мне", "about"],
+              ["Навыки", "useful"],
+              ["Работы", "works"],
+              ["Отзывы", "feeds"],
+              ["Связаться", "forms"]
+            ];
           ul.menu__list
-            each item in items
+            each row in items 
               li.menu__item 
-                a.menu__link #{item}
+                a(href='#' + row[1]).menu__link #{row[0]}
 
       .header__socials
         - var icons = ["insta", "vk", "github"]
@@ -22,7 +30,7 @@ section.hero
               a(href="").socials__link
                 +icon(item, "socials__icon")
 
-      #hamburger-menu-link.hamburger-menu-link
+      button.hamburger-menu-link
         .hamburger-menu-link__bars          
 
     .hero-content

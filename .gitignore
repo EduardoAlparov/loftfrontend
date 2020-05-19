@@ -1,4 +1,6 @@
 node_modules
+stories
+.storybook
 .DS_Store
 .vscode
 .idea

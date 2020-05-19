@@ -3,9 +3,13 @@ import Flickity from 'vue-flickity';
 
 
 new Vue({
-  el: ".feeds",
+  el: '.feeds',
   components: {
     Flickity
+  },
+
+  props: {
+    disabled: Boolean
   },
 
   data() {
@@ -18,6 +22,7 @@ new Vue({
         groupCells: true,
         freeScroll: false,
         contain: true,
+        resize: false,
         watchCSS: false
       }    
     }
@@ -37,7 +42,7 @@ new Vue({
     checkArrows() {
       if (this.$refs.flickity.selectedIndex() == 0 ) {
         this.$el.querySelector('.feeds__button-left').disabled = true;
-      }else if (this.$refs.flickity.selectedIndex() == this.$refs.flickity.slides().lenght -1) {
+      }else if (this.$refs.flickity.selectedIndex() == this.$refs.flickity.slides().length - 1) {
         this.$el.querySelector('.feeds__button-right').disabled = true;
       }else {
         this.$el.querySelector('.feeds__button-left').disabled = false;

@@ -1,17 +1,17 @@
-section.feeds(@click="checkArrows()" @touchend="checkArrows()")
+section#feeds.feeds(@click="checkArrows" @touchend="checkArrows")
   .container.container-feeds
     .feeds__tilte
       p.feeds__tilte--text Что обо мне говорят
       .feeds__button 
-        button(@click="previous()" :disabled="true").feeds__button-left <
-        button(@click="next()" :disabled="false").feeds__button-right >
+        button(@click="previous" :disabled="true").feeds__button-left <
+        button(@click="next" :disabled="false").feeds__button-right >
     flickity(ref="flickity" :options="flickityOptions").feeds-slider
       - for (var i = 0; i < 7; i++)
         .feeds-slider__item
           +icon('quote', "feeds__icon") 
           .feeds__block
             .feeds__text
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus architecto quidem recusandae provident dolor rem molestiae atque corrupti deleniti.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus architecto quidem recusandae provident. 
             .feed__author
               .feed__author-avatar
                 .avatar         
