@@ -61,6 +61,7 @@
   margin-bottom: 60px;
 
   @include desktop {
+    margin-top: 80px;
     margin-bottom: unset;
   }
 
@@ -102,6 +103,7 @@
   line-height: 1.875;
 
   @include tablets {
+    width: auto;
     text-align: center;
   }
 
@@ -123,7 +125,11 @@
 
 .skills-row__list {
   display: flex;
-  
+  flex-wrap: wrap; 
+
+  @include tablets {
+    flex-wrap: wrap;
+  }
 
   @include phones {
     flex-wrap: wrap;

@@ -14,7 +14,7 @@
 	width: 40%;
 
 	@include tablets {
-
+		width: 100%;
 	}
 
 	@include phones {
@@ -36,6 +36,11 @@
 	color: rgb(65, 76, 99);
 	line-height: 2.667;
 	font-weight: 500;
+
+	&:hover {
+    color: #ff9a00;
+	}
+	
 }
 
 .nav_hamburger {
@@ -101,8 +106,12 @@
 	display: none;
 	cursor: pointer;
 
-	@include tablets {
+	@include desktop{
 		display: flex;
+	}
+
+	@include tablets {
+		
 	}
 }
 

@@ -7,11 +7,13 @@
     background-image: url("~images/content/train.png");
     background-size: cover;
     background-position: center;
-    min-height: 200vh;
+    height: 100%;
+
   }  
 
   @include phones {
-    
+    min-height: min-content;
+    height: 100%;
   }
 }
 

@@ -6,10 +6,14 @@
 
 
 .works {
-  height: 100vh;
+  height: 100%;
   position: relative;
   min-height: 650px;
+  
+}
 
+.works__slider {
+  margin-bottom: 130px;
 }
 
 .works__title {
@@ -37,21 +41,22 @@
 
 .slider {
   display: flex;
+  position: relative;
 
-  @include tablets {
+  @include desktop {
     flex-direction: column;
   }
 }
 
 .slider__left-section{
-  flex: 3;
   position: relative;
   margin-right: 111px;
   z-index: 100;
   margin-left: 25px;
+  margin-bottom: 80px;
 
   @include tablets {
-    margin-bottom: 80px;
+    margin-right: 0;
     margin-left: 0;
   }
 
@@ -66,12 +71,10 @@
   flex: 2;
   z-index: 11;
 
-  @include tablets {
+  @include desktop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 120px;
-  
   }
 
   @include phones {
@@ -95,28 +98,20 @@
 }
 
 .slider__preview-numeral--two{
-  bottom: 0;
+  line-height: 0.8;
   position: absolute;
   font-size: 300px;
   color: rgb(230, 230, 230, 0.5);
   font-weight: 900;
-  top: -23%;
-  left: -26%;
+  bottom: 100%;
+  left: -100%;
+  z-index: -10;
   
   @include desktop{
-  top: -29%;
-  left: -40%;
-  z-index: 10;
+    font-size: 280px;
   }
 
   @include tablets {
-    font-size: 280px;
-    top: -156%;
-    right: -3%;
-    left: unset;
-  }
-
-  @include phones {
     display: none;
   }
 }
@@ -190,12 +185,14 @@
   height: 100%;
 
   @include phones {
-    right: -13%;
-    bottom: -36px;
+    height: 70px;
+    right: -20%;
+    bottom: 0;
   }
 }
 
 .scrollbar__button {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%
@@ -235,7 +232,7 @@
   line-height: 1.875;
   margin-bottom: 20px;
 
-  @include tablets {
+  @include desktop {
     width: 450px;
     text-align: center;
     margin-bottom: 30px;
