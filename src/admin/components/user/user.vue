@@ -18,13 +18,14 @@ export default {
     height: 50px;
     overflow: hidden;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20px;
   }
 
   .user-component {
     display: flex;
     align-items: center;
     color: #fff;
+    margin-right: 30px;
   }
 
 </style>
