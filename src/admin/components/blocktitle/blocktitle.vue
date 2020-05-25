@@ -1,10 +1,14 @@
 <template lang="pug">
   .blocks__title
     h1.sections__title {{blockname}} 
+    addgroup
 </template>
 
 <script>
+import addgroup from "../../components/addgroup";
+
 export default {
+  components: {addgroup},
   props: ["blockname"]
 }
 </script>

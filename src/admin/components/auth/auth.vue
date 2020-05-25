@@ -20,5 +20,16 @@ export default {
     //height: 100%;
     min-height: 100vh;
     background: url('../../../images/content/trainbridge.jpg') 50% no-repeat;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      background: #414c63;
+      opacity: .9;
+      z-index: 2;
+    }
   }
 </style>

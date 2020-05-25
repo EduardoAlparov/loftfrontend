@@ -15,8 +15,7 @@ export default {
 </script>
 <style lang="postcss">
   .headline-component{
-    background-image: linear-gradient(to top, #3e3e59, #454573);
-    padding: 20px;
+    background-image: linear-gradient(to top, rgb(208,115,27) 0%, rgb(214,131,31) 48%, rgb(220,147,34) 100%);    padding: 20px;
     display: flex;
     align-items: center;
     color: #fff;

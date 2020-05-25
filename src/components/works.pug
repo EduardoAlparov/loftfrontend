@@ -3,43 +3,4 @@ section#works.works
     
     p.works__title Мои работы
 
-    .works__slider
-      .slider
-        .slider__left-section 
-          .slider__preview
-            +image('content/preview.png', "slider__preview-img")
-              
-          .slider__scrollbar
-            ul.miniature__list
-              li.miniature__item 
-                button(href="#").miniature__link
-                  +image('content/miniatureone.jpg', "miniature__img")
-              li.miniature__item
-                button(href="#").miniature__link
-                  +image('content/miniaturetwo.jpg', "miniature__img")
-              li.miniature__item
-                button(href="#").miniature__link
-                  +image('content/miniaturethree.jpg', "miniature__img")
-              li.miniature__item
-                button(href="#").miniature__link
-                  +image('content/miniaturethree.jpg', "miniature__img")
-            .scrollbar__buttons
-              .scrollbar__button
-                button.scrollbar__switch-btn--rigth >
-                button.scrollbar__switch-btn--left <
-                p.slider__preview-numeral--two 2     
-                
-                    
-        .slider__right-section
-          .slider__tags
-            ul.tags__list
-              li.tags__item HTML    
-              li.tags__item CSS    
-              li.tags__item JScript   
-          .slider__site-title
-            p Сайт школы образования
-          .slider__site-desc
-            p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нем свой контент. А пока посмотрите, как тут все класно и красиво!       
-          a(href="#").slider__site-link
-            +icon('link', "link-icon")   
-            .link-text Посмотреть сайт
+    #slider-component

@@ -2,22 +2,23 @@ import Vue from "vue";
 
 const btns = {
   template: "#slider-btns",
+  props: ["currentWork", "works", "currentIndex"],
 };
 const thumbs = {
   template: "#slider-thumbs",
+  components: { btns },
   props: ["works", "currentWork"],
 };
 
 const display = {
   template: "#slider-display",
-  components: { thumbs, btns },
+  components: { thumbs },
   props: ["currentWork", "works", "currentIndex"],
-  computed: {
-    reversedWorks() {
-      const works = [...this.works];
-      return works.reverse();
-    }
-  }
+  methods: {
+    handleSlide(direction) {
+      this.$emit('slide', direction)
+    },
+  },
 };
 
 const tags = {

@@ -1,23 +1,51 @@
 section#forms.forms
   .container.container-forms
     h2.forms__title Связаться со мной 
-    form.forms__blocks
+    form.forms__blocks(@submit.prevent="submitForm")
       .forms__block-one
-        label.forms__block-name 
+        label.forms__block-name(:class="{error: !nameValid}")
           .forms__block-label Введите ваше имя
-          input.forms__block-input--name(name='name', type='text', required='')
-          +icon('user', "form__icon-user") 
-      
-        label.forms__block-mail 
+          input.forms__block-input--name(
+            name='name'
+            type='text'
+            autocomplete="off"
+            required=''
+            placeholder="Дмитрий Ковальчук"
+            @input="validateName"
+            onFocus="this.Placeholder=''"
+            )
+          +icon('user', "form__icon-user")      
+          .form__tooltip  {{nameError}}
+        label.forms__block-mail(:class="{error: !emailValid}")
           .forms__block-label Введите ваш email
-          input.forms__block-input--mail(name='mail', type='text', required='')
+          input.forms__block-input--mail(
+            name='email'
+            type='email'
+            autocomplete="off"
+            placeholder="user@domain.ru"
+            @input="validateEmail"
+            onFocus="this.Placeholder=''"
+            )
           +icon('envelope', "form__icon-mail") 
-
+          .form__tooltip  {{emailError}} 
       .forms__block-two
-        label.forms__block-text
-          .forms__block-label Сообшение к письму
-          input.forms__block-input--text(name='comment', autocomplete="off" type='text', maxlength="100" required='')
+        label.forms__block-text(:class="{error: !messageValid}")
+          .forms__block-label Сообщение к письму
+          input.forms__block-input--text(
+            name='message' 
+            autocomplete="off" 
+            type='text' 
+            maxlength="100" 
+            placeholder="Требуется ваша помощь в создании сайта."
+            @input="validateMessage"
+            onFocus="this.Placeholder=''"
+            ) 
           +icon('message', "form__icon-text") 
+          .form__tooltip  {{messageError}}  
 
       .forms__block-flag--btn
-        button.forms__block-button() Отправить
+        button.forms__block-button(@click.prevent="submitForm") Отправить
+  .overlay(:class="{disabled: overlayHidden}" @click="hideOverlay")    
+    .overlay__content 
+      .overlay__message {{resultMessage}}
+        button.overlay__close(@click="hideOverlay") Закрыть

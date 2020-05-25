@@ -49,6 +49,7 @@
 }
 
 .slider__left-section{
+  flex: 3;
   position: relative;
   margin-right: 111px;
   z-index: 100;
@@ -58,6 +59,7 @@
   @include tablets {
     margin-right: 0;
     margin-left: 0;
+    
   }
 
   @include phones {
@@ -68,13 +70,14 @@
 
 .slider__right-section{
   position: relative;
-  flex: 2;
+  flex: 1;
   z-index: 11;
 
   @include desktop {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 100px;
   }
 
   @include phones {
@@ -145,7 +148,7 @@
     }
   }
 
-  &:active {
+  &.active {
     outline-color: #ff9a00;
     z-index: 100;
     &:hover {
@@ -204,7 +207,7 @@
   padding: 10px 20px;
   width: 50px;
   height: 48%;
-
+  outline: none;
 
   &:hover {
     background-color: #ff9a00;
@@ -218,6 +221,10 @@
   font-weight: bold;
   line-height: 1.6;
   margin-bottom: 32px;
+
+  @include tablets {
+    text-align: center;
+  }
 
   @include phones {
     font-size: 24px;
