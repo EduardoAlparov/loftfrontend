@@ -7,7 +7,7 @@ const btns = {
 const thumbs = {
   template: "#slider-thumbs",
   components: { btns },
-  props: ["works", "currentWork"],
+  props: ["works", "currentWork", "currentIndex"],
 };
 
 const display = {
