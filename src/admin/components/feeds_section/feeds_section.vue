@@ -36,6 +36,22 @@
         .reviews__control
           a.reviews__control-edit Править
           a.reviews__control-remove Удалить 
+    .reviews__item.list--third    
+      .reviews__item-content
+        .reviews__user
+          .reviews__image
+            img(
+              src="https://picsum.photos/seed/picsum/300/300"
+            ).reviews__image-img
+          .reviews__details
+            .reviews__name Владимир Сабанцев
+            .reviews__title Разработчик
+        hr.form-divider
+        .reviews__text 
+          p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequatur dignissimos ducimus ea eaque earum eum impedit ipsam laborum, modi nemo officiis optio possimus recusandae repellendus sunt suscipit tenetur velit!
+        .reviews__control
+          a.reviews__control-edit Править
+          a.reviews__control-remove Удалить 
 </template>
 
 <script>
@@ -67,6 +83,9 @@ export default {
 
     &--add {
       background-image: linear-gradient(90deg,#ed8000,#f29400);
+      &:hover {
+        background-image: linear-gradient(90deg, #f29400, #ed8000);    
+    }
     }
   }
   .list--third {
@@ -166,6 +185,9 @@ export default {
       display: inline-block;
       background: svg-load("pencil.svg", width=100%, height=100%, fill="#373bcf");
     }
+    &:hover {
+      text-decoration: underline;
+    }
   }
   .reviews__control-remove {
     color: rgba(65,76,99,.5);
@@ -179,6 +201,9 @@ export default {
       margin-left: 10px;
       display: inline-block;
       background: svg-load("Cross.svg", width=100%, height=100%, fill="#c92d2d");
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }  
 </style>

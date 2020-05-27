@@ -6,6 +6,7 @@ script(type="text/x-template")#slider-container
         :works="works"
         :currentIndex="currentIndex"
         @slide="handleSlide"
+        @switchSlide="clickSwitchSlide"
       )
       info(
         :currentWork="currentWork"
@@ -20,15 +21,17 @@ script(type="text/x-template")#slider-display
         :works="works"
         :currentWork="currentWork"
         @slide="handleSlide"
+        @switchSlide="$emit('switchSlide', $event)"
       )
 
 script(type="text/x-template")#slider-thumbs
   .slider__scrollbar
     ul.miniature__list
       li.miniature__item(
-        v-for="work in works" 
+        v-for="(work, index) in works" 
         :key="work.id"
-        :class="{active: currentWork.id === work.id}"
+        :class="[{'active': (currentWork.id === work.id)}, (currentIndex === index) ? 'active' : '']"
+        @click="$emit('switchSlide', index)"
       )
         button.miniature__link
           img(:src="work.photo").miniature__img
@@ -36,7 +39,6 @@ script(type="text/x-template")#slider-thumbs
         @slide="$emit('slide', $event)"
         :currentWork="currentWork"
       )
-        
 
 script(type="text/x-template")#slider-btns
   .scrollbar__buttons

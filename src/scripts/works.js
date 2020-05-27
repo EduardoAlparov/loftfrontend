@@ -17,7 +17,10 @@ const display = {
   methods: {
     handleSlide(direction) {
       this.$emit('slide', direction)
-    },
+    }, 
+    clickSwitchSlide(direction) {
+      this.$emit('switchSlide', direction) 
+    }
   },
 };
 
@@ -45,6 +48,7 @@ new Vue({
     return {
       works: [],
       currentIndex: 0,
+      isActive: true,
     };
   },
   computed: {
@@ -72,6 +76,9 @@ new Vue({
           this.currentIndex--;
           break;
       }
+    },
+    clickSwitchSlide(imageIndex) {
+      this.currentIndex = imageIndex;
     },
     makeArrWithRequireImages(array) {
       return array.map((item) => {

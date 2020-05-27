@@ -159,7 +159,10 @@ export default {
       line-height: 40px;
       color: #fff;
       border-radius: 50%;
-    }
+    }    
+    &:hover {
+      background-image: linear-gradient(90deg, rgb(220,147,34) 100%, rgb(214,131,31) 58%);    
+      }
     &:disabled {
         opacity: 0.3;
       }

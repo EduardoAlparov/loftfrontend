@@ -192,6 +192,9 @@ export default {
     font-size: 16px;
     font-weight: 600;
     margin-right: 30px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   .form__controls-submit {
     cursor: pointer;

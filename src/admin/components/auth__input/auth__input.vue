@@ -53,6 +53,7 @@ export default {
     top: 30px;
     width: 20px;
     height: 20px;
+    outline: none;
   }
   .auth__input-wrapper {
     display: flex;
@@ -109,5 +110,8 @@ export default {
     border-bottom-right-radius: 40px;
     text-transform: uppercase;
     outline: none;
+    &:hover {
+      background-image: linear-gradient( 0deg, rgb(220,147,34) 100%, rgb(214,131,31) 48%,rgb(208,115,27) 0%);
+    }
   }
 </style>

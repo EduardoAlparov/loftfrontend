@@ -63,6 +63,9 @@ export default {
 
     &--add {
       background-image: linear-gradient(90deg,#ed8000,#f29400);
+      &:hover {
+        background-image: linear-gradient(90deg, #f29400, #ed8000);    
+    }
     }
   }
   .list--third {
@@ -169,7 +172,10 @@ export default {
       height: 15px;
       margin-left: 10px;
       display: inline-block;
-      background: svg-load("pencil.svg", width=100%, height=100%, fill="#373bcf");
+      background: svg-load("pencil.svg", width=100%, height=100%, fill="#373bcf");  
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
   .works__control-remove {
@@ -184,6 +190,9 @@ export default {
       margin-left: 10px;
       display: inline-block;
       background: svg-load("Cross.svg", width=100%, height=100%, fill="#c92d2d");
+    }
+    &:hover {
+      text-decoration: underline;
     }
   }
 </style>

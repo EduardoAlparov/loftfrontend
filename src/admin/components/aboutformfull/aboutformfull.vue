@@ -158,6 +158,7 @@ export default {
     font-weight: 600;
     width: 40px;
     padding: 0;
+
     &::before {
       content: "+";
       background-image: linear-gradient(180deg, rgb(214,131,31) 48%, rgb(220,147,34) 100%);
@@ -170,6 +171,10 @@ export default {
       line-height: 40px;
       color: #fff;
       border-radius: 50%;
+
+      &:hover {
+        background-image: linear-gradient(0deg, rgb(220,147,34) 50%, rgb(214,131,31) 68%);    
+      }
     }
   }
 </style>
