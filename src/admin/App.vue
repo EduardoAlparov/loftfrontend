@@ -1,83 +1,31 @@
 <template lang="pug">
   .wrapper
-    template 
-      auth
-      header.header-container
-        headline
-          user(
-            userpic="https://picsum.photos/300/300"
-            username="Эдуард Алпаров"
-          )
-      section.tabs-container
-        tabs(
-          @tabChenged="handleTabChange"
+    template(v-if="$route.meta.public")
+      router-view
+
+    template(v-else-if="userIsLoggedIn")  
+      app-header(
+        userpic="https://picsum.photos/300/300"
+        username="Эдуард Алпаров"
         )
+      tabs
       main.content-container
-        .container
-          blocktitle(
-            blockname='Блок "Обо мне"')
-          .about__section  
-            aboutform
-            aboutformfull
-        .container.works  
-          blocktitleempty(
-            blockname="Блок 'Работы'"
-          )    
-          works    
-          works_section
-        .container.reviews
-          blocktitleempty(
-            blockname="Блок 'Отзывы'"
-          )
-          feeds 
-          feeds_section
-      message_green     
-      message_blue     
-      message_red     
+        router-view(:pageTitle="$route.meta.title")
+
 </template>
 
 <script>
-import auth from "./components/auth";
-import headline from "./components/headline";
-import tabs from "./components/tabs";
-import user from "./components/user";
-import blocktitle from "./components/blocktitle";
-import aboutform from "./components/aboutform";
-import aboutformfull from "./components/aboutformfull";
-import works from "./components/works";
-import works_section from "./components/works_section";
-import feeds from "./components/feeds";
-import feeds_section from "./components/feeds_section";
-import message_green from "./components/message_green";
-import message_blue from "./components/message_blue";
-import message_red from "./components/message_red";
-
+import { mapState, mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
-    auth,
-    headline,
-    tabs,
-    user,
-    blocktitle,
-    aboutform,
-    aboutformfull,
-    works,
-    works_section,
-    feeds,
-    feeds_section,
-    message_green,
-    message_blue,
-    message_red
+    appHeader: () => import("./components/header"),
+    tabs: () => import("./components/tabs")
   },
-
-  methods: {
-    handleTabChange(tab) {
-      this.$router.push(tab.href)
-    }
-
+  computed: {
+    ...mapGetters("user", ["userIsLoggedIn"])
   }
-};
+}
 </script>
 
 <style lang="postcss">

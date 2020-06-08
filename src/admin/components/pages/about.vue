@@ -1,70 +1,113 @@
 <template lang="pug">
-  form(@submit.prevent="createCategory").form.about__form.list--half
-    .form__title
-      input(
-        type="text"
-        v-model="title"
-        name="title"
-        placeholder="Название новой группы"
-      ).about__form-title
-      .form__buttons
-        button(type="submit").form__thick-btn
-        button(name="remove").form__remove-btn
-    hr.form-divider    
-    .form__content    
-      ol 
-        li(v-for="cat in categories" :key="cat.id") {{cat.category}}
-    .form__controls 
-      input(
-        name="name"
-        type="text"
-        placeholder="Новый навык"
-      ).form__controls-name
-      .form__controls-value-wrapper
+  .container.about 
+    .about__info 
+      h1.section__title Блок "Обо мне"  
+      a.addbutton Добавить группу 
+
+    form(@submit.prevent="createCategory").form.about__form.list--half
+      .form__title
+        input(
+          type="text"
+          v-model="title"
+          name="title"
+          placeholder="Название новой группы"
+        ).about__form-title
+        .form__buttons
+          button(type="submit").form__thick-btn
+          button(name="remove").form__remove-btn
+
+      hr.form-divider   
+
+      .form__content    
+        ol 
+          li(v-for="cat in categories" :key="cat.id") {{cat.category}}
+      .form__controls 
         input(
           name="name"
-          type="number"
-          min="0"
-          max="100"
-          placeholder="100"
-        ).form__controls-value
-      button(
-        disabled="disabled"
-      ).form__controls-btn  
+          type="text"
+          placeholder="Новый навык"
+        ).form__controls-name
+        .form__controls-value-wrapper
+          input(
+            name="name"
+            type="number"
+            min="0"
+            max="100"
+            placeholder="100"
+          ).form__controls-value
+        button(
+          disabled="disabled"
+        ).form__controls-btn  
 </template>
 
 <script>
-import $axios from "../../requests";
-import { mapActions, mapState } from "vuex";
+import axios from 'axios';
+
+const baseUrl = "https://webdev-api.loftschool.com";
+
+const token = localStorage.getItem('token') || "";
+  
+axios.defaults.baseURL = baseUrl;
+axios.defaults.headers["Authorization"] = `Bearer ${token}` 
+
 export default {
-  components: {
-    skillsGroup: () => import("../skills-group")
-  },
   data: () => ({
-    title: ""
+    title: "",
+    categories: []
   }),
-  computed : {
-    ...mapState("categories", {
-      categories: state => state.categories
-    })
-  },
   created() {
     this.fetchCategories();
   },
   methods: {
-    ...mapActions("categories", ["addCategory", "fetchCategories"]),
-    async addNewCategory() {
-      try {
-        await this.addCategory(this.title);
-      } catch (error) {
-        alert(error.message);
-      }
+    createCategory() {
+      axios
+      .post("/categories", {
+        title: this.title
+      })
+      .then(response =>{
+        this.categories.unshift(response.data)
+      });
+    },
+    fetchCategories() {
+      axios.get('/categories/342').then(response => {
+        this.categories = response.data
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="postcss" scoped>
+  .about__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  .addbutton{
+    color: #ff9a00;
+    text-decoration: none;
+    margin-left: 60px;
+    font-weight: 600;
+    font-size: 14px;
+
+    &:before {
+      content: "+";
+      background-image: linear-gradient(90deg, rgb(214,131,31) 48%, rgb(220,147,34) 100%);
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      border-radius: 50%;
+      margin-right: 15px;
+      &:hover {
+        background-image: linear-gradient(90deg, rgb(220,147,34) 100%, rgb(214,131,31) 48%);    
+      }
+    }
+
+  }  
   .form {
     box-shadow: 3px 2px 5px 0 rgba(0,0,0,.07);
     background-color: #fff;

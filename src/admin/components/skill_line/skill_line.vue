@@ -4,7 +4,6 @@
         name="name"
         type="text"
         value="HTML"
-        id="form1"
         disabled="disabled"
       ).form__row-name
       .form__controls-value-wrapper

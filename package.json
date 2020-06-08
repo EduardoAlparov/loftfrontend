@@ -20,7 +20,7 @@
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
     "@storybook/addons": "^5.3.18",
-    "@storybook/vue": "^5.3.18",
+    "@storybook/vue": "^5.3.19",
     "acorn": "^6.0.5",
     "acorn-dynamic-import": "^4.0.0",
     "autoprefixer": "^9.4.8",
@@ -58,6 +58,8 @@
     "last 2 versions"
   ],
   "dependencies": {
+    "@babel/polyfill": "^7.10.1",
+    "axios": "^0.19.2",
     "cypress": "^4.5.0",
     "flickity": "^2.2.1",
     "jquery": "^3.5.1",
@@ -66,8 +68,10 @@
     "pug": "^2.0.3",
     "request": "^2.88.0",
     "signale": "^1.4.0",
+    "simple-vue-validator": "^0.16.0",
     "vue": "^2.6.7",
     "vue-flickity": "^1.2.1",
-    "vue-router": "^3.0.2"
+    "vue-router": "^3.3.2",
+    "vuex": "^3.4.0"
   }
 }
