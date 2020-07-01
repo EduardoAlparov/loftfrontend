@@ -4,6 +4,7 @@ export default {
     categories: []
   },
   mutations: {
+    ADD_NEW_GROUP: (state, data) => (state.categories = data),
     SET_CATEGORIES: (state, data) => (state.categories = data),
     ADD_CATEGORY: (state, category) => state.categories.push(category),
     ADD_SKILL: (state, newSkill) => {
@@ -64,7 +65,7 @@ export default {
 
     async fetchCategories({ commit }) {
       try {
-        const { data } = await this.$axios.get("/categories/1");
+        const { data } = await this.$axios.get("/categories/{user_id}");
         commit("SET_CATEGORIES", data);
         console.log(data);
       } catch (error) {}

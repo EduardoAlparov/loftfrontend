@@ -20,10 +20,27 @@ import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   components: {
     appHeader: () => import("./components/header"),
-    tabs: () => import("./components/tabs")
+    tabs: () => import("./components/tabs"),
+    tooltips: () => import('./components/tooltips')
   },
   computed: {
-    ...mapGetters("user", ["userIsLoggedIn"])
+    ...mapGetters("user", ["userIsLoggedIn"]),
+    ...mapState("tooltips", { visible: state => state.visible })
+  },
+  methods: {
+    ...mapActions("tooltips", ["closeTooltip"])
+  },
+  watch: {
+    visible(value) {
+      if (value === true) {
+        let timeout;
+        clearTimeout(timeout);
+
+        timeout = setTimeout(() =>{
+          this.closeTooltip();
+        }, 3000)
+      }
+    }
   }
 }
 </script>

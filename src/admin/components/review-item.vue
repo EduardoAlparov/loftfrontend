@@ -3,26 +3,69 @@
     .reviews__user
       .reviews__image
         img(
-          src="https://picsum.photos/seed/picsum/300/300"
+          :src="photoUrl"
         ).reviews__image-img
       .reviews__details
-        .reviews__name Владимир Сабанцев
-        .reviews__title Разработчик
+        .reviews__name {{review.author}}
+        .reviews__title {{review.occ}}
     hr.form-divider
     .reviews__text 
-      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequatur dignissimos ducimus ea eaque earum eum impedit ipsam laborum, modi nemo officiis optio possimus recusandae repellendus sunt suscipit tenetur velit!
+      p {{review.text}}
     .reviews__control
-      a.reviews__control-edit Править
-      a.reviews__control-remove Удалить 
+      a(type="button" @click="editUserReview").reviews__control-edit Править
+      a(type="button" @click.prevent="removeUserReview").reviews__control-remove Удалить 
 </template>
 
 <script>
+import { mapActions, mapGetters, mapState, mapMutations } from 'vuex';
+import { getAbsoluteImgPath } from '../helpers/pictures';
+import { renderer } from '../helpers/pictures';
+
 export default {
-  
+  props: {
+    review: Object
+  },
+  data() {
+    return {
+      photoUrl: getAbsoluteImgPath(this.review.photo)
+    }
+  },
+  watch: {
+    reviews() {
+      this.photoUrl = getAbsoluteImgPath(this.review.photo);
+    }
+  },
+  methods: {
+    ...mapActions('reviews', ["removeReview"]),
+    ...mapActions('tooltips', ["showTooltip"]),
+    ...mapMutations("reviews", ["SET_CURRENT_REVIEW"]),
+
+    async removeUserReview() {
+      try {
+        const response = await this.removeReview(this.review.id);
+        this.showTooltip({
+          type: "success",
+          text: response.data.message
+        });
+      } catch (e) {
+        this.showTooltip({
+          type: "error",
+          text: e.message
+        });
+      }
+    },
+    editUserReview() {
+      this.SET_CURRENT_REVIEW(this.review.id);
+      this.$emit('editUserReview');
+    }
+  }
 }
 </script>
 
 <style lang="postcss" scoped>
+  @import url('../default.pcss');
+  @import "../../styles/mixins.pcss";
+
   .reviews__item-content {
     padding: 20px;
   }
@@ -37,6 +80,12 @@ export default {
     border-radius: 50%;
     overflow: hidden;
   }
+
+  .reviews__image-img {
+    width: 100%;
+    height: 100%;
+  }
+
   .reviews__details {
     display: flex;
     width: calc(100% - 75px);
@@ -44,6 +93,7 @@ export default {
     justify-content: space-between;
     align-items: flex-start;
   }
+
   .reviews__name {
     font-size: 18px;
     font-weight: 700;
@@ -59,6 +109,7 @@ export default {
     margin: 20px 0;
   }
   .reviews__text {
+    width: 100%;
     font-size: 16px;
     font-weight: 600;
     line-height: 1.88;

@@ -1,16 +1,18 @@
 import { wrapIntoFormData } from '../../helpers/forms';
+import { generateStdError } from '../../helpers/errorHandler';
+
 
 export default { 
   namespaced: true,
   state: {
     reviews: [],
-    currentReviews: []
+    currentReview: []
   },
   mutations: {
     GET_REVIEWS: (state, payload) => {
       state.reviews = payload;
     },
-    ADD_REVIEWS: (state, review) => {
+    ADD_REVIEW: (state, review) => {
       state.reviews.unshift(review);
     },
     UPDATE_REVIEW: (state, changedReview) => {
@@ -20,17 +22,17 @@ export default {
     },
     REMOVE_REVIEW: (state, removedReviewId) => {
       state.reviews = state.reviews.filter(
-        review => review.id !==removedReviewId
+        review => review.id !== removedReviewId
       );
     },
     SET_CURRENT_REVIEW: (state, selectedReviewId) => {
-      state.currentReviews = state.reviews.filter(
+      state.currentReview = state.reviews.filter(
         review => review.id === selectedReviewId
       )[0];
     }
   },
   actions: {
-    async addReview({commit}, review) {
+    async addReview({ commit }, review) {
       const data = wrapIntoFormData(review);
       try {
         const response = await this.$axios.post("/reviews", data);
@@ -40,10 +42,10 @@ export default {
         generateStdError(e);
       }
     },
-    async getReviews({commit, rootGetters}) {
+    async getReviews({ commit }) {
       try {
-        const userId = rootGetters['user/userId'];
-        const response = await this.$axios.get('/reviews/${userId');
+        //const userId = rootState['user/userId'];
+        const response = await this.$axios.get(`/reviews/342`);
         commit('GET_REVIEWS', response.data);
         return response 
       } catch(e) {
@@ -53,18 +55,17 @@ export default {
     async updateReview({ commit }, review) {
       const data = wrapIntoFormData(review);
       try {
-        const response = await this.$axios.post('/reviews/${review.Id}', data);
-        commit('UPDATE_REVIEWS', response.data.review);
+        const response = await this.$axios.post(`/reviews/${review.id}`, data);
+        commit('UPDATE_REVIEW', response.data.review);
         return response 
       } catch(e) {
         generateStdError(e);
       }  
     },
-    async updateReview({ commit }, reviewId) {
-      const data = wrapIntoFormData(review);
+    async removeReview({ commit }, reviewId) {
       try {
-        const response = await this.$axios.post('/reviews/${review.Id}');
-        commit('REMOVE_REVIEWS', reviewId);
+        const response = await this.$axios.delete(`/reviews/${reviewId}`);
+        commit('REMOVE_REVIEW', reviewId);
         return response 
       } catch(e) {
         generateStdError(e);

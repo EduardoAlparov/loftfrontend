@@ -4,7 +4,7 @@
       h1.section__title Блок "Обо мне"  
       a.addbutton Добавить группу 
 
-    form(@submit.prevent="createCategory").form.about__form.list--half
+    form(@submit.prevent="addNewCategory").form.about__form.list--half
       .form__title
         input(
           type="text"
@@ -19,8 +19,7 @@
       hr.form-divider   
 
       .form__content    
-        ol 
-          li(v-for="cat in categories" :key="cat.id") {{cat.category}}
+    
       .form__controls 
         input(
           name="name"
@@ -41,40 +40,34 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const baseUrl = "https://webdev-api.loftschool.com";
-
-const token = localStorage.getItem('token') || "";
-  
-axios.defaults.baseURL = baseUrl;
-axios.defaults.headers["Authorization"] = `Bearer ${token}` 
+import { mapActions, mapState } from "vuex";
 
 export default {
+  components: {
+    skillsGroup: () => import("../skill-group")
+  },
   data: () => ({
-    title: "",
-    categories: []
+    title: ""
   }),
+  computed : {
+    ...mapState("categories", {
+      categories: state => state.categories
+    })
+  },
   created() {
     this.fetchCategories();
   },
   methods: {
-    createCategory() {
-      axios
-      .post("/categories", {
-        title: this.title
-      })
-      .then(response =>{
-        this.categories.unshift(response.data)
-      });
-    },
-    fetchCategories() {
-      axios.get('/categories/342').then(response => {
-        this.categories = response.data
-      })
+    ...mapActions("categories", ["addCategory", "fetchCategories"]),
+    async addNewCategory() {
+      try {
+        await this.addCategory(this.title);
+      } catch (error) {
+        alert(error.message);
+      }
     }
   }
-}
+};
 </script>
 
 <style lang="postcss" scoped>

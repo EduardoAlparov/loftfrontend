@@ -1,7 +1,7 @@
 <template lang="pug">
   .container.reviews
     .reviews__info  
-      .h1.section__title Блок "Отзывы"
+      h1.section__title Блок "Отзывы"
     .reviews__section
       review-add(
         v-if="addFormVisible"
@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import {mapActions, mapState} from 'vuex';
+import { mapActions, mapState } from 'vuex';
+import { getAbsoluteImgPath } from '../../helpers/pictures';
 
 export default {
   components: {
@@ -35,9 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState('reviews', {
-      reviews: state => state.reviews
-    })
+    ...mapState('reviews', { reviews: state => state.reviews })
   },
   methods: {
     ...mapActions('tooltips', ["showTooltip"]),
@@ -65,6 +64,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+  @import "../../../styles/mixins.pcss";
+
   .container {
     width: 100%;
     padding: 0 30px;
@@ -83,10 +84,14 @@ export default {
     margin-bottom: 60px;
   }
 
-  .sections__title {
+  .section__title {
     font-size: 21px;
     color: #414c63;
     font-weight: 700;
+
+    @include tablets {
+      font-size: 20px;
+    }
   }
 
   .reviews__section {
@@ -106,7 +111,7 @@ export default {
     box-shadow: 4px 3px 20px 0 rgba(0,0,0,.07);
     background-color: #fff;
     margin-bottom: 30px;
-    padding-bottom: 60px;
+    padding-bottom: 30px;
     position: relative;
 
     &--add {
@@ -114,11 +119,22 @@ export default {
       &:hover {
         background-image: linear-gradient(90deg, #f29400, #ed8000);    
       }
+
     }
   }
 
   .list--thierd {
     width: calc(33.33333% - 30px);
+    min-height: 350px;
+    
+    @include desktop {
+      width: calc(50% - 30px);
+    }
+
+    @include tablets {
+      width: 100%;
+      min-height: auto;
+    }
   }
 
   .reviews__add-item {
@@ -130,6 +146,12 @@ export default {
     color: #fff;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
+
+    @include tablets {
+      flex-direction: row;
+      justify-content: center;
+    }
   }  
   .reviews__add-plus {
     font-size: 75px;
@@ -141,7 +163,17 @@ export default {
     text-align: center;
     line-height: 150px;
     margin-bottom: 10px;
+
+    @include tablets {
+      width: 50px;
+      height: 50px;
+      font-size: 18px;
+      line-height: 43px;
+      margin-right: 29px;
+      margin-top: 10px;
+    }
   }
+
   .reviews__add-text {
     font-size: 18px;
     font-weight: 700;

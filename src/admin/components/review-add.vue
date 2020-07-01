@@ -1,61 +1,64 @@
 <template lang="pug">
-  .reviews__section  
-    form.form.rewies__form.list--full
-      .form__title  
-        h2.works__form-title Добавить отзыв
-      hr.form-divider
-      .form__content
-        .form__content-left.form__content-left--reviews
-          .form__row.form__row--vertical
+  form.form.rewies__form.list--full
+    .form__title  
+      h2.works__form-title {{(mode === 'edit') ? "Редактировать отзыв" : "Добавить отзыв"}}
+    hr.form-divider
+    .form__content
+      .form__content-left.form__content-left--reviews
+        .form__row.form__row--vertical
+          .form__user
             label(
               for="image"
-              :data-value="avatarButtonValue"
-              :class="{'hasPhoto': this.photoUrl.length}"
-            ).form__file-label
-            .form__user
+              :data-text="avatarButtonValue"
+              :class="{'hasPhoto' : this.photoUrl.length}"
+            ).form__file-label 
+              .form__user-photo(:style="{'background-image': `url(${this.photoUrl})`}")
             input(
               name="image"
               type="file"
-              placeholder
-            ).form__file
-            a.form__file-link Добавить фото
-        .form__content-right.form__content-right--reviews
-          .form__row
-            .form__row.form__row--half
-              label(
-                for="name"  
-              ).form__label Имя автора
-              input(
-                name="name"
-                type="text"
-              ).form__input
-            .form__row.form__row--half
-              label(
-                for="title"  
-              ).form__label Титул автора
-              input(
-                name="title"
-                type="text"
-              ).form__input
-          .form__row.form__row--vertical  
+              placeholder=""
+              @change="loadPhoto"
+              autocomplete="off"
+              ).form__file 
+      .form__content-right.form__content-right--reviews
+        .form__row
+          .form__row.form__row--half
             label(
-              for="review"  
-            ).form__label Отзыв
-            textarea(
-              name="review"
+              for="author"  
+            ).form__label Имя автора
+            input(
+              v-model="review.author"
+              name="name"
               type="text"
-            ).form__textarea  
-      .form__controls  
-        a.form__controls-cancel Отменить
-        input(
-          name="name"
-          type="submit"
-          value="Сохранить"
-          ).form__controls-submit
+              autocomplete="off"
+            ).form__input
+          .form__row.form__row--half
+            label(
+              for="occ"  
+            ).form__label Титул автора
+            input(
+              v-model="review.occ"
+              name="name"
+              type="text"
+              autocomplete="off"
+            ).form__input
+        .form__row.form__row--vertical  
+          label(
+            for="text"  
+          ).form__label Отзыв
+          textarea(
+            v-model="review.text"
+            name="text"
+          ).form__textarea  
+    .form__controls  
+      button(type="button" @click.prevent="$emit('closeAddForm')").form__controls-cancel Отменить
+      button(type="button" @click.prevent="mode === 'new' ? addUserReview() : updateUserReview()").form__controls-submit Сохранить
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState} from 'vuex';
+import { mapActions, mapGetters, mapState, mapMutations} from 'vuex';
+import { getAbsoluteImgPath } from '../helpers/pictures';
+import { reader } from '../helpers/pictures';
 
 export default {
   props: {
@@ -79,7 +82,7 @@ export default {
   },
   watch: {
     currentReview() {
-      if (this.mode === "edit") this.getCurrentReview();
+      if (this.mode === 'edit') this.getCurrentReview();
     },
     mode() {
       if (this.mode === "new") {
@@ -92,7 +95,7 @@ export default {
     }
   },
   created() {
-    if ( this.mode === "edit") this.getCurrentReview();
+    if ( this.mode === 'edit') this.getCurrentReview();
   },
   methods: {
     ...mapActions("reviews", ["addReview", "updateReview"]),
@@ -160,6 +163,8 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
+  @import "../../styles/mixins.pcss";
+
   .reviews__section {
     display: flex;
     justify-content: space-between;
@@ -198,18 +203,38 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+
+    @include tablets{
+      flex-direction: column;
+      align-item: center;
+    }
   }
   .form__content-left {
     width: 40%;
     &--reviews {
       width: 250px;
     }
+    @include tablets {
+      width: auto;
+      margin-bottom: 50px;
+    }
   }
+
   .form__row {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
+
+    @include desktop {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @include tablets {
+      align-items: center;
+    }
+
     &--vertical {
       align-items: flex-start;
       flex-direction: column;
@@ -217,37 +242,64 @@ export default {
     &--half {
       width: calc(50% - 15px);
       flex-direction: column;
+
+      @include desktop {
+        width: auto;
+      }
+
+      @include tablets{
+        width: 100%;
+      }
     }
   }
+
   .form__user {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     background: #dee4ed;
     display: block;
-    margin: 0 auto 20px;
+    margin: 0 auto ;
     position: relative;
-    &:before {
-      position: absolute;
-      content: "";
-      width: 150px;
-      height: 150px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      background:  svg-load("user.svg", width=100%, height=100%, fill="#a0a5b1");
-    }
   }
+
+  .form__file-label {
+    
+    content: attr(data-text);
+    width: 160px;
+    height: 160px;
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: svg-load("user.svg", width=100%, height=100%, fill="#a0a5b1");
+  }
+
+  .form__user-photo {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
   .form__file {
-    display: none;
-  }
-  .form__file-link {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     color: #5500f2;
-    text-decoration: none;
     font-size: 16px;
     font-weight: 600;
   }
+
+
   .form__content-right {
     width: calc(60% - 15px);
     display: flex;
@@ -255,6 +307,10 @@ export default {
     align-items: flex-start;
     &--reviews{
       width: calc(100% - 265px);
+    }
+
+    @include tablets {
+      width: 100%;
     }
   }
   .form__label{
@@ -266,7 +322,7 @@ export default {
   }
   .form__input {
     outline: none;
-    padding: 10px 30px;
+    padding: 10px 30px 10px 10px;
     border: 0;
     border-bottom: 1px solid rgba(65,76,99,.5);
   }
@@ -289,6 +345,11 @@ export default {
     justify-content: flex-end;
     align-items: center;
     width: 90%;
+
+    @include tablets {
+      width: 100%;
+      justify-content: center;
+    }
   }
   .form__controls-cancel {
     color: #5500f2;
@@ -301,6 +362,7 @@ export default {
     }
   }
   .form__controls-submit {
+    outline: none;
     cursor: pointer;
     height: 50px;
     border-radius: 25px;
