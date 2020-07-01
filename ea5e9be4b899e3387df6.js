@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{420:function(n,o,i){"use strict";i.r(o);var l=i(95),s=Object(l.a)({},void 0,void 0,!1,null,null,null);s.options.__file="src/admin/components/skill-group.vue",o.default=s.exports}}]);
