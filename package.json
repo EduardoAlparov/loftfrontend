@@ -59,7 +59,7 @@
   ],
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "cypress": "^4.5.0",
     "flickity": "^2.2.1",
     "jquery": "^3.5.1",
